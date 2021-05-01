@@ -1,0 +1,42 @@
+﻿@model IEnumerable<work1.Models.Student>
+@{
+    Layout = "_Layout";
+}    
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <td scope="col">№</td>
+            <td scope="col">Имя</td>
+            <td scope="col">Фамилия</td>
+            <td scope="col">Отчество</td>
+            <td scope="col">Текущий статус</td>
+            <td scope="col">Группа</td>
+            <td scope="col">Дата зачисления/Отчисления</td>
+            <td scope="col"><a href="/Home/Index1" class="btn btn-danger">Добавить студента</a></td>
+        </tr>
+    </thead>
+    <tbody class="border-white">
+        @{
+            int i = 1;
+        }
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td scope="row">@i</td>
+                <td>@student.Name</td>
+                <td>@student.Surname</td>
+                <td>@student.Patronymic</td>
+                <td>@student.State</td>
+                <td>@student.Course</td>
+                <td>@student.Date.ToLongDateString()</td>
+                <td><a class="btn btn-dark" href="~/Home/Editing/@student.id">Редактировать</a></td>
+            </tr>
+            {
+                i = i + 1;
+            }
+        }
+    </tbody>
+</table>
+
+

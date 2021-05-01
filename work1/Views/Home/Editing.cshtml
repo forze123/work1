@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="width:450px; margin:auto;">
+    <h1>Редактирование</h1>
+    <form method="post" action="/Home/Editing">
+        <div style="margin-top:20px">
+            <input type="text" style="margin-top:10px;" name="Name" placeholder="Имя" class="form-control w-100" value="@ViewBag.Student.Name" />
+            <input type="text" style="margin-top:10px;" name="Surname" placeholder="Фамилия" class="form-control w-100" value="@ViewBag.Student.Surname" />
+            <input type="text" style="margin-top:10px;" name="Patronymic" placeholder="Отчество" class="form-control w-100" value="@ViewBag.Student.Patronymic" />
+        </div>
+        <div class="row" style="margin-top:25px">
+            <div class="col">
+                <div>
+                    <select class="form-control" value="@ViewBag.Student.State" required name="State">
+                        <option>@ViewBag.Student.State</option>
+                        <option>Очное обучение</option>
+                        <option>Заочное обучение</option>
+                        <option>Отчислен(а)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" name="Course" placeholder="Курс" class="form-control" value="@ViewBag.Student.Course" />
+            </div>
+            <div class="col">
+                <input type="date" name="Date" class="form-control" min="2018-01-01" style="width:150px;" value="@ViewBag.Student.Date.ToString("yyyy-MM-dd")" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm" style="margin-top:25px">
+                <button class="btn btn-danger" type="submit">Сохранить</button>
+            </div>
+        </div>
+        <input type="hidden" name="id" value="@ViewBag.Student.id" />
+    </form>
+            <form method="post" style="margin-left:108px; margin-top:-38px;" action="/Home/Delete" class="col-lg-1">
+                <button value="@ViewBag.Student.id" name="id" class="btn btn-dark">Удалить</button>
+            </form>
+            <a href="/Home/Index" style="margin-left:380px; margin-top:-66px;" class="btn btn-dark">Назад</a>
+</div>
